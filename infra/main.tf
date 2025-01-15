@@ -4,5 +4,5 @@ resource "random_id" "default" {
 
 resource "google_storage_bucket" "default" {
   name                        = "${random_id.default.hex}-gcf-source"
-  location                    = "europe"
+  location                    = "europe-west2"
 }
