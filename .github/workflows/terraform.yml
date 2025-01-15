@@ -91,7 +91,7 @@ jobs:
       working-directory: infra
 
     - name: Initialize Terraform
-      run: terraform init
+      run: terraform init -reconfigure
       working-directory: 'infra'
 
     - name: Plan Terraform Configuration
