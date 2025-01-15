@@ -42,7 +42,7 @@ jobs:
       working-directory: infra
 
     - name: Initialize Terraform
-      run: terraform init -reconfigure
+      run: terraform init -migrate-state
       working-directory: 'infra'
 
     - name: Plan Terraform Configuration
