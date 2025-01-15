@@ -40,8 +40,14 @@ jobs:
       run: terraform init
       working-directory: 'infra'
 
-    - name: Apply Terraform Configuration
+    - name: Plan Terraform Configuration
       run: terraform plan
+      working-directory: 'infra'
+      env:
+        GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
+    
+    - name: Apply Terraform Configuration
+      run: terraform Apply -auto-approve
       working-directory: 'infra'
       env:
         GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
