@@ -21,7 +21,7 @@ jobs:
 
     - name: Import GPG Key
       run: |
-        curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C0BA5CE6DC6315A3
 
     - name: Install Google Cloud SDK
       run: |
