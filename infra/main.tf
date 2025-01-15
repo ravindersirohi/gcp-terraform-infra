@@ -1,9 +1,6 @@
-resource "random_id" "default" {
-  byte_length = 8
-}
 
 resource "google_storage_bucket" "default" {
-  name                        = "pocapps-cloud-func-source"
+  name                        = "gsb-pocapps-cloud-func-ew"
   location                    = "europe-west2"
   force_destroy               = true
   uniform_bucket_level_access = true
