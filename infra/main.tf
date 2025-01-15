@@ -3,7 +3,7 @@ resource "random_id" "default" {
 }
 
 resource "google_storage_bucket" "default" {
-  name                        = "${random_id.default.hex}-gcf-source"
+  name                        = "pocapps-cloud-func-source"
   location                    = "europe-west2"
   force_destroy               = true
   uniform_bucket_level_access = true
