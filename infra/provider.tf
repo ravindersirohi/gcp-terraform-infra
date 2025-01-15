@@ -7,8 +7,7 @@ terraform {
   }
   backend "gcs" { 
     bucket = "pocapps-tfstate" 
-    prefix = "terraform/state" 
-    project = "pocapps" 
+    prefix = "terraform/state"
   }
 }
 
