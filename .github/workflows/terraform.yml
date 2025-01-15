@@ -21,7 +21,9 @@ jobs:
 
     - name: Download GPG Key
       run: |
-        curl -f https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        curl -o cloud-google-gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        gpg --no-default-keyring --keyring ./cloud.google.gpg --import cloud-google-gpg
+        sudo mv cloud.google.gpg /usr/share/keyrings
 
     - name: Install Google Cloud SDK
       run: |
