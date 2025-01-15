@@ -5,12 +5,9 @@ resource "random_id" "default" {
 resource "google_storage_bucket" "default" {
   name                        = "${random_id.default.hex}-gcf-source"
   location                    = "europe-west2"
-  force_destroy = true
-
-  uniform_bucket_level_access {
-    enabled = true
-  }
-
+  force_destroy               = true
+  uniform_bucket_level_access = true
+  
   versioning {
     enabled = true
   }
