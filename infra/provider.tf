@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "gcs" { 
-    bucket = "pocapps-tfstate" 
+    bucket = "pocapps-terraform-state" 
     prefix = "terraform/state/gpc-terraform-infra"
   }
 }

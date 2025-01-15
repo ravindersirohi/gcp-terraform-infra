@@ -1,6 +1,6 @@
 
 resource "google_storage_bucket" "default" {
-  name                        = "gsb-pocapps-cloud-func-ew"
+  name                        = "gsb-pocapps-cloud-func-storage-ew-${terraform.workspace}"
   location                    = "europe-west2"
   force_destroy               = true
   uniform_bucket_level_access = true
