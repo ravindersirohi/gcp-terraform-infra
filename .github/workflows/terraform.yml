@@ -49,7 +49,7 @@ jobs:
       working-directory: infra
 
     - name: Plan Terraform Configuration
-      run: terraform plan -out=tfplan -var "workspace_name=tst" -input=false
+      run: terraform plan -out=tfplan -input=false
       working-directory: 'infra'
       env:
         GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
@@ -101,7 +101,7 @@ jobs:
       working-directory: infra
 
     - name: Plan Terraform Configuration
-      run: terraform plan -out=tfplan -var "workspace_name=tst" -input=false
+      run: terraform plan -out=tfplan -input=false
       working-directory: 'infra'
       env:
         GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
