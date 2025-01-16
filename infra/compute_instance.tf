@@ -1,12 +1,10 @@
 resource "google_service_account" "sa" {
     account_id   = local.service_account_name
     display_name = "Service account for VM instance"
-    project      = data.google_project.default.id
 }
 
 resource "google_compute_instance" "comp-ins" {
     name                        = local.compute_instance_name
-    project                     = data.google_project.default.id
     machine_type                = "e2-medium"
     zone                        = var.region
     allow_stopping_for_update   = true

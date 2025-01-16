@@ -1,6 +1,5 @@
 
 resource "google_storage_bucket" "default" {
-  project                     = data.google_project.default.id
   name                        = local.storage_bucket_name
   location                    = var.region
   force_destroy               = true
