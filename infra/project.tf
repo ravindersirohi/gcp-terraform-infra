@@ -13,8 +13,3 @@ resource "google_project" "current" {
     #   folder_id     = google_folder.devops.name
 }
 
-resource "google_project_iam_member" "project_creator" { 
-    project = google_project.current.project_id 
-    role = "roles/owner" 
-    member = data.google_client_openid_userinfo.me.email
-}

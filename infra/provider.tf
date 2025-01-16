@@ -13,4 +13,13 @@ provider "google" {
 }
 
 data "google_client_config" "current" {}
+
+output "client_config_details" { 
+    value = data.google_client_config.current
+}
+
 data "google_client_openid_userinfo" "me" {}
+
+output "google_client_openid_userinfo" { 
+    value = data.google_client_openid_userinfo.me
+}
