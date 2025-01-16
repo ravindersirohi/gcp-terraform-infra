@@ -11,10 +11,6 @@ on:
 jobs:
   Develop:
     runs-on: ubuntu-latest
-    strategy: 
-      matrix: 
-        environment: [dev, tst]
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
