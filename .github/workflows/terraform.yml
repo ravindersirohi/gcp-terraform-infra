@@ -36,11 +36,11 @@ jobs:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
     - name: Select Terraform Workspace 
-      run: terraform workspace select dev || terraform workspace new dev
+      run: terraform workspace dev || terraform workspace new dev
       working-directory: infra
 
     - name: Initialize Terraform
-      run: terraform init -reconfigure -input=false
+      run: terraform init -migrate-state -input=false
       working-directory: 'infra'
 
     - name: Plan Terraform Configuration
