@@ -6,7 +6,7 @@ resource "google_service_account" "sa" {
 resource "google_compute_instance" "comp-ins" {
     name                        = local.compute_instance_name
     machine_type                = "e2-medium"
-    zone                        = var.region
+    zone                        = "europe-west2-b"
     allow_stopping_for_update   = true
     tags                        = local.tags
 
