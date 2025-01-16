@@ -20,9 +20,16 @@ resource "google_compute_instance" "comp-ins" {
         network = "default"
     }
 
-    metadata = { 
-        startup-script = "sudo apt-get update && sudo apt-get install -y dotnet-sdk-8" 
-    }
+    metadata_startup_script = <<-EOF 
+        #!/bin/bash 
+        apt-get update 
+        apt-get install -y dotnet-sdk-8 
+        mkdir /app 
+        cd /app 
+        dotnet new web -o my-dotnet-app 
+        cd my-dotnet-app 
+        dotnet run 
+    EOF
 
     service_account {
         email  = google_service_account.sa.email
