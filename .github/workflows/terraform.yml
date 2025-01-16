@@ -36,7 +36,7 @@ jobs:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
     - name: Select Terraform Workspace 
-      run: terraform workspace dev || terraform workspace new dev
+      run: terraform workspace select ${{ env.DEV }} || terraform workspace new ${{ env.DEV }}
       working-directory: infra
 
     - name: Initialize Terraform
@@ -85,7 +85,7 @@ jobs:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
     - name: Select Terraform Workspace 
-      run: terraform workspace new tst
+      run: terraform workspace select ${{ env.TST }} || terraform workspace new ${{ env.TST }}
       working-directory: infra
 
     - name: Initialize Terraform
