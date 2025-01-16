@@ -6,8 +6,8 @@ variable "project" {
       id = string
     })
     default = {
-      id = "SirohiDevOpsApps"
-      name = "DevOps Apps Project"
+      id = "sirohi-devops-apps"
+      name = "DevOps Apps"
     }
 }
 
