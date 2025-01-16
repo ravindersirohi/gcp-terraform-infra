@@ -20,7 +20,7 @@ resource "google_compute_instance" "comp-ins" {
         network = "default"
     }
 
-    metadata_startup_script = <<-EOF 
+    metadata_startup_script = <<-EOF
         #!/bin/bash 
         apt-get update 
         apt-get install -y dotnet-sdk-8 
