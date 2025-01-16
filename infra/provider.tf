@@ -8,13 +8,13 @@ terraform {
 }
 
 provider "google" {
-  project = "pocapps" 
-  region = var.region
+  project = var.project.id
+  region  = var.region
 }
 
 data "google_client_config" "current" {}
 data "google_client_openid_userinfo" "me" {}
 
-output "google_client_openid_userinfo" { 
-    value = data.google_client_openid_userinfo.me
-}
+# output "google_client_openid_userinfo" { 
+#     value = data.google_client_openid_userinfo.me
+# }

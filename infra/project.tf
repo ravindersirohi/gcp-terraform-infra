@@ -6,10 +6,10 @@ data "google_project" "default" { }
 #   parent = data.google_project.default.org_id
 # }
 
-resource "google_project" "current" {
-    name          = var.project.name
-    project_id    = var.project.id
-    org_id = data.google_project.default.org_id
-    #   folder_id     = google_folder.devops.name
-}
+# resource "google_project" "current" {
+#     name          = var.project.name
+#     project_id    = var.project.id
+#     org_id = data.google_project.default.org_id
+#     #   folder_id     = google_folder.devops.name
+# }
 
