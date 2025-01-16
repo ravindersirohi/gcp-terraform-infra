@@ -10,7 +10,7 @@ resource "google_compute_instance" "comp-ins" {
     machine_type              = "e2-medium"
     zone                      = var.region
     allow_stopping_for_update = true
-    tags = local.tags
+    tags                      = local.tags
 
     boot_disk {
         initialize_params { 
