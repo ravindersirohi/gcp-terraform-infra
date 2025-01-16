@@ -1,6 +1,6 @@
 
-variable "workspace_name" { 
-    description = "The name of the workspace." 
+variable "region" { 
+    description = "Cloud region, for example - europe-west1, europe-west2" 
     type = string
-    default = "dev"
+    default = "europe-west2"
 }
