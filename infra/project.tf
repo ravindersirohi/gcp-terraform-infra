@@ -3,7 +3,7 @@ data "google_project" "default" { }
 
 resource "google_folder" "devops" {
   display_name = "sirohi-devops-${terraform.workspace}"
-  parent = "organizations/${google_project.default.org_id}"
+  parent = "organizations/${data.google_project.default.org_id}"
 }
 
 resource "google_project" "current" {
