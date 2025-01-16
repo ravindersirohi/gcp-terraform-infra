@@ -9,9 +9,11 @@ on:
       - main
 
 jobs:
-  Develop:
+  deploy:
     runs-on: ubuntu-latest
-    environment: dev
+    strategy: 
+      matrix: 
+        environment: [dev, tst]
 
     steps:
     - name: Checkout code
@@ -37,57 +39,8 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-    # - name: Select Terraform Workspace 
-    #   run: terraform workspace select dev || terraform workspace new dev
-    #   working-directory: infra
-
-    - name: Initialize Terraform
-      run: terraform init -reconfigure -input=false
-      working-directory: 'infra'
-
-    - name: Plan Terraform Configuration
-      run: terraform plan
-      working-directory: 'infra'
-      env:
-        GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
-    
-    - name: Apply Terraform Configuration
-      run: terraform apply -auto-approve
-      working-directory: 'infra'
-      env:
-        GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
-  
-  Test:
-    runs-on: ubuntu-latest
-    environment: tst
-    needs: Develop
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-
-    - name: Download GPG Key
-      run: |
-        curl -o cloud-google-gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-        gpg --no-default-keyring --keyring ./cloud.google.gpg --import cloud-google-gpg
-        sudo mv cloud.google.gpg /usr/share/keyrings
-
-    - name: Install Google Cloud SDK
-      run: |
-        echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-        sudo apt-get update
-        sudo apt-get install google-cloud-sdk -y
-
-    - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1
-      with:
-        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
-    - name: Select Terraform Workspace 
-      run: terraform workspace select ${{ environment }} || terraform workspace new ${{ environment }}
+    - name: Set Workspace 
+      run: terraform workspace select ${{ matrix.environment }} || terraform workspace new ${{ matrix.environment }}
       working-directory: infra
 
     - name: Initialize Terraform
@@ -105,3 +58,4 @@ jobs:
       working-directory: 'infra'
       env:
         GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
+  
