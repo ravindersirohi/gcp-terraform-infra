@@ -5,10 +5,6 @@ terraform {
       version = "6.16.0"
     }
   }
-  backend "gcs" { 
-    bucket = "pocapps-terraform-state" 
-    prefix = "terraform/state/gpc-terraform-infra"
-  }
 }
 
 provider "google" {
