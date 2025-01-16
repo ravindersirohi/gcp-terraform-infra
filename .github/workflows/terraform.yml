@@ -43,11 +43,11 @@ jobs:
     #   working-directory: infra
 
     - name: Initialize Terraform
-      run: terraform plan -out=tfplan -var "workspace_name=dev" -input=false
+      run: terraform init -reconfigure -input=false
       working-directory: 'infra'
 
     - name: Plan Terraform Configuration
-      run: terraform plan
+      run: terraform plan -out=tfplan -var "workspace_name=tst" -input=false
       working-directory: 'infra'
       env:
         GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GCP_CREDENTIALS }}
