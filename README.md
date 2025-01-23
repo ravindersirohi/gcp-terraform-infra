@@ -8,7 +8,7 @@ Please find below the list of resources been setup.
 - Compute instance.
 
 ## Terraform user permissions
-Please freate a service account and grant listed below permission.
+Please freate a service account and grant listed below permission, and store the service account json in GCP_CREDENTIALS variable (GitHub ->repo -> settings)
 - Folder Admin
 - Project Editor
 - Storage Admin
